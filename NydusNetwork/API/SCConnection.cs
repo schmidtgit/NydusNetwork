@@ -9,10 +9,8 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NydusNetwork.API
-{
-    internal class SCConnection
-    {
+namespace NydusNetwork.API {
+    internal class SCConnection {
         public Status Status { get; private set; }
         private const int READ_BUFFER = 1024;
         private const int MAX_CONNECTION_ATTEMPTS = 25;

@@ -5,8 +5,7 @@ using NydusNetwork.Services;
 using NydusNetwork.Logging;
 using NydusNetwork.API;
 
-namespace NydusNetwork
-{
+namespace NydusNetwork {
     public class GameClient : IGameClient {
         public Status Status => _connection.Status;
         private GameSettings _settings;

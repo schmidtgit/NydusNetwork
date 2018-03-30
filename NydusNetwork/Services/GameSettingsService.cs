@@ -6,8 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.ObjectModel;
 
-namespace NydusNetwork.Services
-{
+namespace NydusNetwork.Services {
     public static class GameSettingsService {
         public static string ToArguments(this GameSettings gs, bool isHost) {
             var sb = new StringBuilder();
@@ -80,7 +79,14 @@ namespace NydusNetwork.Services
 
         public static Uri GetUri(this GameSettings gs,bool IsHost)
             => IsHost ? new Uri($"ws://{gs.ConnectionAddress}:{gs.ConnectionServerPort}/sc2api") : new Uri($"ws://{gs.ConnectionAddress}:{gs.ConnectionClientPort}/sc2api");
+
         public static string WorkingDirectory(this GameSettings gs) => $"{gs.FolderPath}\\Support";
-        public static string ExecutableClientPath(this GameSettings gs) => Directory.GetDirectories(gs.FolderPath+ @"\Versions\",@"Base*")[0] + @"\SC2.exe";
+
+        public static string ExecutableClientPath(this GameSettings gs) {
+            if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+                return Directory.GetDirectories(gs.FolderPath + @"\Versions\",@"Base*")[0] + @"\SC2.app";
+            else
+                return Directory.GetDirectories(gs.FolderPath + @"\Versions\",@"Base*")[0] + @"\SC2.exe";
+        } 
     }
 }

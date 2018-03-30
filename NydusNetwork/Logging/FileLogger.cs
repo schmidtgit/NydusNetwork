@@ -2,8 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace NydusNetwork.Logging
-{
+namespace NydusNetwork.Logging {
     public class FileLogger : ILogger {
         private string _path;
         public FileLogger(string outputfolder, string name = "log") {
@@ -14,9 +13,11 @@ namespace NydusNetwork.Logging
             }
             WriteToFile("");
         }
+
         void ILogger.LogError(object s) => WriteToFile($"{DateTime.Now.TimeOfDay} |  ERROR  |\t {s}");
 
         void ILogger.LogInfo(object s) => WriteToFile($"{DateTime.Now.TimeOfDay}\t {s} (info)");
+
         void ILogger.LogMessage(object s) => WriteToFile($"{DateTime.Now.TimeOfDay}\t {s}");
 
         void ILogger.LogSuccess(object s) => WriteToFile($"{DateTime.Now.TimeOfDay} | SUCCESS |\t {s}");

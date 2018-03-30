@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NydusNetwork.Services
-{
-    public class CaseHandler<T1, T2>
-    {
+namespace NydusNetwork.Services {
+    public class CaseHandler<T1, T2> {
         private IDictionary<T1,ICollection<Action<T2>>> _events;
         public CaseHandler() => _events = new Dictionary<T1, ICollection<Action<T2>>>();
 

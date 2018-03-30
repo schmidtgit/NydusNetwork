@@ -1,8 +1,7 @@
 ﻿using NydusNetwork.API.Protocol;
 using System.Collections.ObjectModel;
 
-namespace NydusNetwork.Model
-{
+namespace NydusNetwork.Model {
     public class GameSettings {
         // Technical Settings
         public string FolderPath { get; set; }
