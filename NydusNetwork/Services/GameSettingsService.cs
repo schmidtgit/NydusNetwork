@@ -41,10 +41,7 @@ namespace NydusNetwork.Services {
                 return new Request {
                     JoinGame = new RequestJoinGame {
                         Race = isHost ? gs.ParticipantRace : gs.Opponents.First(o => o.Type == PlayerType.Participant).Race,
-                        Options = new InterfaceOptions {
-                            Raw = true,
-                            Score = true
-                        },
+                        Options = gs.InterfaceOptions,
                         SharedPort = gs.MultiplayerSharedPort,
                         ServerPorts = gs.ServerPort(),
                         ClientPorts = { gs.ClientPorts() }
@@ -54,10 +51,7 @@ namespace NydusNetwork.Services {
                 return new Request {
                     JoinGame = new RequestJoinGame {
                         Race = gs.ParticipantRace,
-                        Options = new InterfaceOptions {
-                            Raw = true,
-                            Score = true
-                        }
+                        Options = gs.InterfaceOptions
                     }
                 };
         }
